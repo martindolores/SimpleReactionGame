@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleReactionGame", "SimpleReactionGame\SimpleReactionGame.csproj", "{D1EEDE4F-99A1-4B7D-8196-9351F778BDF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{993ACF6C-62F1-470F-8AE6-3C60D0FA8708}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1EEDE4F-99A1-4B7D-8196-9351F778BDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EEDE4F-99A1-4B7D-8196-9351F778BDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EEDE4F-99A1-4B7D-8196-9351F778BDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EEDE4F-99A1-4B7D-8196-9351F778BDF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993ACF6C-62F1-470F-8AE6-3C60D0FA8708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993ACF6C-62F1-470F-8AE6-3C60D0FA8708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993ACF6C-62F1-470F-8AE6-3C60D0FA8708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993ACF6C-62F1-470F-8AE6-3C60D0FA8708}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34489226-C3EE-4A92-93B4-3406228FEB61}
+	EndGlobalSection
+EndGlobal
