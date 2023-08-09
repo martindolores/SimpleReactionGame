@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     tools {
-        MSBuild "MSbuild"
+        MSBuild "MSBuild"
     }
         
 
