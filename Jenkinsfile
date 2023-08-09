@@ -1,10 +1,17 @@
 pipeline {
     agent any
     
+    tools {
+        msbuild "MSbuild"
+    }
+        
+
     stages {
         stage('Build') {
             steps {
-                echo ""
+                script {
+                    sh 'dotnet build'
+                }
             }
         }
         stage('Unit and Integration Tests') {
