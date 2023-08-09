@@ -7,7 +7,7 @@ pipeline {
                 script {
                     msbuild(
                         tools: [msbuildInstallationName: 'MSBuild'],  // Specify the name of your MSBuild installation
-                        projects: 'C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame.sln',  // Path to your solution file
+                        projects: 'C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln',  // Path to your solution file
                         targets: 'Build',  // The target you want to build, e.g., 'Build' or 'Rebuild'
                         properties: [
                             'Configuration': 'Release',  // Build configuration
