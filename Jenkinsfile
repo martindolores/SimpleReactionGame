@@ -17,7 +17,6 @@ pipeline {
                 }
             }
         }
-    }
         stage('Unit and Integration Tests') {
             steps {
                 echo ""
