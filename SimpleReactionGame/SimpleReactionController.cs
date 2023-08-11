@@ -27,6 +27,16 @@ namespace Tester
 
         //Methods
         #region METHODS
+        public int ComplexMethod(int a, int b)
+        {
+            // This method does complex calculations without proper comments explaining its purpose.
+            int result = a * b;
+            for (int i = 0; i < 100; i++)
+            {
+                result += i;
+            }
+            return result;
+        }
         public void Connect(IGui gui, IRandom rng)
         {
             Gui = gui;
