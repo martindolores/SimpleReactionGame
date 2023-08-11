@@ -20,11 +20,17 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 script {
-                    // Install the Codacy CLI
-                    bat 'npm install -g @codacy/codacy-analysis-cli'
+                    // Download and extract the Codacy Analysis CLI
+                    bat 'curl -L https://github.com/codacy/codacy-analysis-cli/archive/master.tar.gz | tar xvz'
+                
+                    // Change to the extracted directory
+                    bat 'cd codacy-analysis-cli-*'
+                
+                    // Install the Codacy Analysis CLI using 'make'
+                    bat 'sudo make install'
 
                     // Configure Codacy CLI
-                    bat 'codacy-analysis-cli auth login --token YOUR_AUTH_TOKEN'
+                    bat 'codacy-analysis-cli auth login --token mq1FWIRqwn0TS7uNEnvU'
 
                     // Run Codacy analysis
                     bat 'codacy-analysis-cli analyze --projectToken YOUR_PROJECT_TOKEN --force'
