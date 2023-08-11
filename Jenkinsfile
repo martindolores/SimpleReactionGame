@@ -20,7 +20,7 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 // Run SonarScanner analysis using the installed global tool
-                bat '"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat" -D"sonar.organization=martindolores" -D"sonar.projectKey=martindolores_SimpleReactionGame" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io" -D"sonar.login=b02000533a66ce05d820f5e540a9fe78db04792f"'
+                bat '"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat" -D"sonar.organization=martindolores" -D"sonar.projectKey=martindolores_SimpleReactionGame" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io"'
             }
         }
         stage('Security Scan') {
