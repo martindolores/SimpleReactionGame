@@ -35,7 +35,7 @@ pipeline {
                     // if (qualityGateStatus != 'OK') {
                     // error 'Quality gate status is not OK'
                     // }  
-                    def projectDir = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame"
+                    def projectDir = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"
                     
                     dir(projectDir) {
                         // Begin SonarScanner analysis
