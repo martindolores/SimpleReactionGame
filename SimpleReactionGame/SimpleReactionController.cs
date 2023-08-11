@@ -31,7 +31,7 @@ namespace Tester
         {
             Gui = gui;
             Rng = rng;
-            Init();
+            Init();f
         }
 
         public void Init()
