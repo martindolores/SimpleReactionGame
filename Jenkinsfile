@@ -20,12 +20,12 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 script {
-                    // Run StyleCop analysis using MSBuild
-                    def styleCopResult = bat(script: "\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\" \"C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln\" /t:RunCodeAnalysis /p:RunCodeAnalysis=true /p:Configuration=Release /p:StyleCopEnabled=true", returnStatus: true)
+                    // Run Roslyn Analyzers
+                    def roslynResult = bat(script: "\"C:\\Program Files\\dotnet\\dotnet.exe\" msbuild \"C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln\" /t:RunAnalyzers /p:Configuration=Release", returnStatus: true)
 
-                    // Check if StyleCop analysis had violations (exit code 1)
-                    if (styleCopResult != 0) {
-                        error 'StyleCop analysis detected violations'
+                    // Check if Roslyn Analyzers had violations (exit code 1)
+                    if (roslynResult != 0) {
+                        error 'Roslyn Analyzers detected violations'
                     }
                 }
             }
