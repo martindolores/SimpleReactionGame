@@ -29,7 +29,7 @@ pipeline {
                         bat(script: installSonarScannerCmd, returnStatus: true)
                         
                         // Begin SonarScanner analysis
-                        def sonarBeginCmd = "dotnet sonarscanner begin /k:SimpleReactionGame /d:sonar.login=\"${sonarToken}\""
+                        def sonarBeginCmd = "dotnet sonarscanner begin /k:SimpleReactionGame /d:sonar.login=sqp_d6e9d6530e285d3be9d22bf2f0b1dc00632b13fa"
                         bat(script: sonarBeginCmd, returnStatus: true)
 
                         // Build the project
