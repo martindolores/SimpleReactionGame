@@ -1,9 +1,10 @@
+using NUnit.Framework;
 using SimpleReactionMachine;
 using Tester;
 
 namespace UnitTests;
 
-[TestClass]
+[TestFixture]
 public class UnitTest
 {
     private static IController controller;
@@ -13,7 +14,7 @@ public class UnitTest
     private static int passed = 0;
 
     private static int Expected = 38;
-    [TestMethod]
+    [Test]
     public void SimpleTest()
     {
         
