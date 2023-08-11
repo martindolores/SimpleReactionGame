@@ -19,15 +19,7 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                script {
-                    // Run Roslyn Analyzers
-                    def roslynResult = bat(script: "\"C:\\Program Files\\dotnet\\dotnet.exe\" msbuild \"C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln\" /t:RunAnalyzers /p:Configuration=Release", returnStatus: true)
-
-                    // Check if Roslyn Analyzers had violations (exit code 1)
-                    if (roslynResult != 0) {
-                        error 'Roslyn Analyzers detected violations'
-                    }
-                }
+                //Need to find tool
             }
         }
         stage('Security Scan') {

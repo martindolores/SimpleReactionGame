@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+Iv8Yx1De+c2sHwwB97svjYmC7F+THn/jfwgwyKowoM0YK2qhNSWMDOCidN8vka+KN3iES3V5qUEXqYySOBPLA==",
+  "dgSpecHash": "uys+HDXKohGgmRXileDcb9h61q4YShmfPlpvZ5SXC96efn1DdevjJCG6jY7hIc37y1yILi3Xg1d1sC92rPIBcA==",
   "success": true,
   "projectFilePath": "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame\\SimpleReactionGame.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\marti\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.4\\microsoft.codeanalysis.analyzers.3.3.4.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
