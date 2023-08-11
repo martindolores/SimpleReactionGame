@@ -67,7 +67,7 @@ def getQualityGateStatus() {
     
     def response = httpRequest(
         url: "${apiUrl}${apiParams}",
-        authentication: 'sonarToken',
+        authentication: '8993981e71a41eb797c328634b1c1082050e483f',
         httpMode: 'GET'
     )
 
