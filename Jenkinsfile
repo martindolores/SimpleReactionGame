@@ -21,7 +21,10 @@ pipeline {
             steps {
                 script {
                     def projectDir = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame"
-                    def sonarToken = credentials('sonarqube-token')
+                    def sonarToken
+                        withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                            sonarToken = SONAR_TOKEN
+                        }
 
                     dir(projectDir) {
                         // Install sonarscanner
@@ -29,7 +32,7 @@ pipeline {
                         bat(script: installSonarScannerCmd, returnStatus: true)
                         
                         // Begin SonarScanner analysis
-                        def sonarBeginCmd = "dotnet sonarscanner begin /k:SimpleReactionGame /d:sonar.login=sqp_d6e9d6530e285d3be9d22bf2f0b1dc00632b13fa"
+                        def sonarBeginCmd = "dotnet sonarscanner begin /k:SimpleReactionGame /d:sonar.login=\"${sonarToken}\""
                         bat(script: sonarBeginCmd, returnStatus: true)
 
                         // Build the project
