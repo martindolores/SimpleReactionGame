@@ -24,6 +24,10 @@ pipeline {
                     def sonarToken = credentials('sonarqube-token')
 
                     dir(projectDir) {
+                        // Install sonarscanner
+                        def installSonarScannerCmd = "dotnet tool install --global dotnet-sonarscanner"
+                        bat(script: installSonarScannerCmd, returnStatus: true)
+                        
                         // Begin SonarScanner analysis
                         def sonarBeginCmd = "dotnet C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-msbuild-5.13.0.66756-net5.0\\SonarScanner.MSBuild.dll begin /k:'SimpleReactionGame' /d:sonar.login=\"${sonarToken}\""
                         bat(script: sonarBeginCmd, returnStatus: true)
