@@ -20,19 +20,22 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 script {
+                    def projectDir = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame"
                     def sonarToken = credentials('sonarqube-token')
 
-                    // Begin SonarScanner analysis
-                    def sonarBeginCmd = "dotnet sonarscanner begin /k:\"SimpleReactionGame\" /d:sonar.login=\"${sonarToken}\""
-                    bat(script: sonarBeginCmd, returnStatus: true)
+                    dir(projectDir) {
+                        // Begin SonarScanner analysis
+                        def sonarBeginCmd = "dotnet sonarscanner begin /k:\"SimpleReactionGame\" /d:sonar.login=\"${sonarToken}\""
+                        bat(script: sonarBeginCmd, returnStatus: true)
 
-                    // Build the project
-                    def buildCmd = "dotnet build C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"
-                    bat(script: buildCmd, returnStatus: true)
+                        // Build the project
+                        def buildCmd = "dotnet build C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"
+                        bat(script: buildCmd, returnStatus: true)
 
-                    // End SonarScanner analysis
-                    def sonarEndCmd = "dotnet sonarscanner end /d:sonar.login=\"${sonarToken}\""
-                    bat(script: sonarEndCmd, returnStatus: true)
+                        // End SonarScanner analysis
+                        def sonarEndCmd = "dotnet sonarscanner end /d:sonar.login=\"${sonarToken}\""
+                        bat(script: sonarEndCmd, returnStatus: true)
+                    }
                 }
             } 
         }
