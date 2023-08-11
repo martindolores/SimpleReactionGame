@@ -25,7 +25,7 @@ pipeline {
 
                     dir(projectDir) {
                         // Begin SonarScanner analysis
-                        def sonarBeginCmd = "dotnet sonarscanner begin /k:\"SimpleReactionGame\" /d:sonar.login=\"${sonarToken}\""
+                        def sonarBeginCmd = "dotnet C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-msbuild-5.13.0.66756-net5.0\\SonarScanner.MSBuild.dll begin /k:\"SimpleReactionGame\" /d:sonar.login=\"${sonarToken}\""
                         bat(script: sonarBeginCmd, returnStatus: true)
 
                         // Build the project
@@ -33,7 +33,7 @@ pipeline {
                         bat(script: buildCmd, returnStatus: true)
 
                         // End SonarScanner analysis
-                        def sonarEndCmd = "dotnet sonarscanner end /d:sonar.login=\"${sonarToken}\""
+                        def sonarEndCmd = "dotnet C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-msbuild-5.13.0.66756-net5.0\\SonarScanner.MSBuild.dll end /d:sonar.login=\"${sonarToken}\""
                         bat(script: sonarEndCmd, returnStatus: true)
                     }
                 }
