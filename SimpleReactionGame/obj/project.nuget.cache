@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AQ184b/KDMdcmmcMEcdsi/JOWXLDjVN1z990DB1YsiH10gtfB7Kl4FjYEypH1Lvk8qSFePFLo49Kmnf7hFRlOQ==",
+  "dgSpecHash": "ZhD97YrTwTr8zfOQCO4em0yahgbTKN2txWYtq+P/3e14vmbCtQvZOMt5MvBnN6yjDiSq0uFfBjkRMNLvY7dVCg==",
   "success": true,
   "projectFilePath": "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame\\SimpleReactionGame.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\marti\\.nuget\\packages\\dotnet-framework-sonarscanner\\5.13.0\\dotnet-framework-sonarscanner.5.13.0.nupkg.sha512"
+  ],
   "logs": []
 }
