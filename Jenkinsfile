@@ -20,14 +20,11 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 // Run StyleCop analysis using MSBuild
-                bat '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe" "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln" /t:RunCodeAnalysis /p:RunCodeAnalysis=true /p:Configuration=Release /p:StyleCopEnabled=true'
-                
-                // Check the exit code of the previous command and fail the build if non-zero
-                script {
-                    def styleCopExitCode = currentBuild.resultIsBetterOrEqualTo("FAILURE") ? 1 : 0
-                    if (styleCopExitCode != 0) {
-                        error 'StyleCop analysis detected violations. Build failed.'
-                    }
+                def styleCopResult = bat(script: '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe" "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln" /t:RunCodeAnalysis /p:RunCodeAnalysis=true /p:Configuration=Release /p:StyleCopEnabled=true', returnStatus: true)
+
+                // Check if StyleCop analysis had violations (exit code 1)
+                if (styleCopResult != 0) {
+                    error 'StyleCop analysis detected violations'
                 }
             }
         }
