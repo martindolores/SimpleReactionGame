@@ -24,7 +24,7 @@ pipeline {
                     //bat '"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat" -D"sonar.organization=martindolores" -D"sonar.projectKey=martindolores_SimpleReactionGame" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io"'
 
                     def sonarScannerCmd = "\"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat\""
-                        def sonarAnalysisCmd = "${sonarScannerCmd} -D\"sonar.organization=martindolores\" -D\"sonar.projectKey=martindolores_SimpleReactionGame\" -D\"sonar.sources=.\" -D\"sonar.host.url=https://sonarcloud.io\" -D\"sonar.login=$SONAR_TOKEN\""
+                        def sonarAnalysisCmd = "${sonarScannerCmd} -D\"sonar.organization=martindolores\" -D\"sonar.projectKey=martindolores_SimpleReactionGame\" -D\"sonar.sources=.\" -D\"sonar.host.url=https://sonarcloud.io\""
                         def sonarScannerExitCode = bat(script: sonarAnalysisCmd, returnStatus: true)
 
                         if (sonarScannerExitCode != 0) {
