@@ -1,0 +1,1 @@
+dotnet sonarscanner begin /k:"martindolores_SimpleReactionGame"
