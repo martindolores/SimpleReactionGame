@@ -22,19 +22,19 @@ pipeline {
                 // Run SonarScanner analysis using the installed global tool
                 //bat '"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat" -D"sonar.organization=martindolores" -D"sonar.projectKey=martindolores_SimpleReactionGame" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io"'
 
-                script {
-                    def sonarScannerResult = bat(returnStatus: true, script: '"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat" -D"sonar.organization=martindolores" -D"sonar.projectKey=martindolores_SimpleReactionGame" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io"')
+                def sonarScannerCmd = "\"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat\""
+                    def sonarAnalysisCmd = "${sonarScannerCmd} -D\"sonar.organization=martindolores\" -D\"sonar.projectKey=martindolores_SimpleReactionGame\" -D\"sonar.sources=.\" -D\"sonar.host.url=https://sonarcloud.io\" -D\"sonar.login=$SONAR_TOKEN\""
+                    def sonarScannerExitCode = bat(script: sonarAnalysisCmd, returnStatus: true)
 
-                    // Check the Sonar analysis result
-                    if (sonarScannerResult != 0) {
-                        error 'Sonar analysis failed'
-                    } else {
-                        def sonarIssues = bat(script: '"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat" -D"sonar.organization=martindolores" -D"sonar.projectKey=martindolores_SimpleReactionGame" -D"sonar.host.url=https://sonarcloud.io" -D"sonar.login=$SONAR_TOKEN" -D"sonar.language=cs" -D"sonar.issue.ignore.allfile=false" -D"sonar.issue.ignore.block=false" -D"sonar.issue.ignore.header=false" -D"sonar.issue.ignore.inline=false" -D"sonar.issue.ignore.multiline=false" -D"sonar.issue.ignore.parameter=false" -D"sonar.issue.ignore.trailingfalse" -D"sonar.issue.ignore.unknown=false" -D"sonar.analysis.mode=issues" -D"sonar.scm.disabled=true" -D"sonar.scm.provider=git" -D"sonar.branch.name=main" -D"sonar.scanner.skip=false" -D"sonar.working.directory=\\\\.scannerwork" -D"sonar.gitlab.project_id=0" -D"sonar.gitlab.ref_name=main"', returnStatus: true)
-                        if (sonarIssues > 0) {
-                            error 'Sonar analysis detected bugs'
-                        }
+                    if (sonarScannerExitCode != 0) {
+                        error 'SonarQube analysis failed'
                     }
-                }
+
+                    // Check SonarQube quality gate status
+                    def qualityGateStatus = getQualityGateStatus()
+
+                    if (qualityGateStatus != 'OK') {
+                        error 'Quality gate status is not OK'
             }
         }
         stage('Security Scan') {
@@ -55,4 +55,23 @@ pipeline {
             }
         }
     }
+}
+
+def getQualityGateStatus() {
+    def apiUrl = 'https://sonarcloud.io/api/qualitygates/project_status'
+    def projectKey = 'martindolores_SimpleReactionGame' 
+    def apiParams = "?projectKey=${projectKey}"
+    
+    def response = httpRequest(
+        url: "${apiUrl}${apiParams}",
+        authentication: 'sonarToken',
+        httpMode: 'GET'
+    )
+
+    if (response.status != 200) {
+        error "Failed to retrieve quality gate status from SonarQube API"
+    }
+
+    def jsonResponse = readJSON(text: response.content)
+    return jsonResponse.projectStatus.status
 }

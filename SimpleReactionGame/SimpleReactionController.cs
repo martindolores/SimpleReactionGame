@@ -37,7 +37,6 @@ namespace Tester
         public void Init()
         {
             CurrentState = new OnState(this);
-            Init();
         }
 
         public void CoinInserted()
