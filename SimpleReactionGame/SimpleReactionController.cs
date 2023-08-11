@@ -31,12 +31,13 @@ namespace Tester
         {
             Gui = gui;
             Rng = rng;
-            Init();f
+            Init();
         }
 
         public void Init()
         {
             CurrentState = new OnState(this);
+            Init();
         }
 
         public void CoinInserted()

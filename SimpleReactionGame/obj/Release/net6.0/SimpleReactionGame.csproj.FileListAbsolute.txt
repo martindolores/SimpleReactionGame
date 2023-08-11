@@ -1,15 +1,5 @@
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\bin\Release\net6.0\SimpleReactionGame.exe
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\bin\Release\net6.0\SimpleReactionGame.deps.json
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\bin\Release\net6.0\SimpleReactionGame.runtimeconfig.json
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\bin\Release\net6.0\SimpleReactionGame.dll
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\bin\Release\net6.0\SimpleReactionGame.pdb
 C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\SimpleReactionGame.csproj.AssemblyReference.cache
 C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\SimpleReactionGame.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\SimpleReactionGame.AssemblyInfoInputs.cache
 C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\SimpleReactionGame.AssemblyInfo.cs
 C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\SimpleReactionGame.csproj.CoreCompileInputs.cache
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\SimpleReactionGame.dll
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\refint\SimpleReactionGame.dll
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\SimpleReactionGame.pdb
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\SimpleReactionGame.genruntimeconfig.cache
-C:\Users\marti\Documents\Study\Deakin\2023\T1\Professional Practice In Information Technology\Task 6.2C\SimpleReactionGame\SimpleReactionGame\obj\Release\net6.0\ref\SimpleReactionGame.dll
