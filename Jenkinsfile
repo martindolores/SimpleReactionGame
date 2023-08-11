@@ -33,7 +33,7 @@ pipeline {
                     bat 'codacy-analysis-cli auth login --token mq1FWIRqwn0TS7uNEnvU'
 
                     // Run Codacy analysis
-                    bat 'codacy-analysis-cli analyze --projectToken YOUR_PROJECT_TOKEN --force'
+                    bat 'codacy-analysis-cli analyze --projectToken mq1FWIRqwn0TS7uNEnvU --force'
 
                     // Get the number of Codacy issues from the report
                     def numIssues = bat(script: 'codacy-analysis-cli report issues -t YOUR_PROJECT_TOKEN -f json | jq length', returnStdout: true).trim()
