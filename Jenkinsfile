@@ -35,7 +35,8 @@ pipeline {
 
                     if (qualityGateStatus != 'OK') {
                         error 'Quality gate status is not OK'
-            }
+                    }  
+            } 
         }
         stage('Security Scan') {
             steps {
