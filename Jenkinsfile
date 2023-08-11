@@ -19,7 +19,14 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                //Need to find tool
+                // Install the Codacy CLI
+                    sh 'npm install -g @codacy/codacy-analysis-cli'
+
+                    // Configure Codacy CLI
+                    sh 'codacy-analysis-cli auth login --token mq1FWIRqwn0TS7uNEnvU'
+
+                    // Run Codacy analysis
+                    sh 'codacy-analysis-cli analyze --projectToken YOUR_PROJECT_TOKEN --force'
             }
         }
         stage('Security Scan') {
