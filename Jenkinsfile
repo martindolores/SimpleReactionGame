@@ -19,7 +19,16 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo ""
+                // Run StyleCop analysis
+                bat '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\Roslyn\\csc.exe" /t:RunCodeAnalysis=true /p:RunCodeAnalysis=true /p:Configuration=Release /p:StyleCopEnabled=true "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"'
+                
+                // Check the exit code of the previous command and fail the build if non-zero
+                script {
+                    def styleCopExitCode = currentBuild.resultIsBetterOrEqualTo("FAILURE") ? 1 : 0
+                    if (styleCopExitCode != 0) {
+                        error 'StyleCop analysis detected violations. Build failed.'
+                    }
+                }
             }
         }
         stage('Security Scan') {
