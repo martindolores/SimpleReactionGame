@@ -19,8 +19,8 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                // Run StyleCop analysis
-                bat '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\Roslyn\\csc.exe" /t:RunCodeAnalysis=true /p:RunCodeAnalysis=true /p:Configuration=Release /p:StyleCopEnabled=true "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"'
+                // Run StyleCop analysis using MSBuild
+                bat '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe" "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln" /t:RunCodeAnalysis /p:RunCodeAnalysis=true /p:Configuration=Release /p:StyleCopEnabled=true'
                 
                 // Check the exit code of the previous command and fail the build if non-zero
                 script {
