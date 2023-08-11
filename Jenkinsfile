@@ -33,7 +33,7 @@ pipeline {
                         bat(script: sonarBeginCmd, returnStatus: true)
 
                         // Build the project
-                        def buildCmd = "dotnet build C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"
+                        def buildCmd = "dotnet build SimpleReactionGame.sln"
                         bat(script: buildCmd, returnStatus: true)
 
                         // End SonarScanner analysis
