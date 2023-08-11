@@ -35,18 +35,21 @@ pipeline {
                     // if (qualityGateStatus != 'OK') {
                     // error 'Quality gate status is not OK'
                     // }  
+                    def projectDir = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame"
+                    
+                    dir(projectDir) {
+                        // Begin SonarScanner analysis
+                        def sonarBeginCmd = "dotnet sonarscanner begin /k:\"martindolores_SimpleReactionGame\""
+                        bat(script: sonarBeginCmd)
 
-                    // Begin SonarScanner analysis
-                    def sonarBeginCmd = "dotnet sonarscanner begin /k:\"martindolores_SimpleReactionGame\""
-                    bat(script: sonarBeginCmd)
+                        // Build the project
+                        // def buildCmd = "dotnet build C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"
+                        // bat(script: buildCmd)
 
-                    // Build the project
-                    // def buildCmd = "dotnet build C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"
-                    // bat(script: buildCmd)
-
-                    // End SonarScanner analysis
-                    def sonarEndCmd = "dotnet sonarscanner end"
-                    bat(script: sonarEndCmd)
+                        // End SonarScanner analysis
+                        def sonarEndCmd = "dotnet sonarscanner end"
+                        bat(script: sonarEndCmd)
+                    }
                 }
             } 
         }
