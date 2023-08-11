@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat "\"${tool 'MSBuild'}\" SimpleReactionGame.sln"
+                bat "\"${tool 'MSBuild'}\" C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"
             }
         }
         stage('Unit and Integration Tests') {
