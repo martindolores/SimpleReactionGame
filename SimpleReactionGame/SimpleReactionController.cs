@@ -71,10 +71,6 @@ namespace Tester
 
         private class OnState : State
         {
-            public ()
-            {
-            }
-
             public OnState(SimpleReactionController controller)
             {
                 controller.Gui.SetDisplay("Insert Coin");
