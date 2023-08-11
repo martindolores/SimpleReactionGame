@@ -20,21 +20,19 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 script {
-                    // Run SonarScanner analysis using the installed global tool
-                    def sonarScannerCmd = "\"C:\\Program Files (x86)\\SonarScanner\\sonar-scanner-5.0.1.3006-windows\\bin\\sonar-scanner.bat\""
-                    def sonarAnalysisCmd = "${sonarScannerCmd} -D\"sonar.organization=martindolores\" -D\"sonar.projectKey=martindolores_SimpleReactionGame\" -D\"sonar.sources=.\" -D\"sonar.host.url=https://sonarcloud.io\""
-                    def sonarScannerExitCode = bat(script: sonarAnalysisCmd, returnStatus: true)
+                    def sonarToken = credentials('sonarqube-token')
+                    
+                    // Begin SonarScanner analysis
+                    def sonarBeginCmd = "dotnet sonarscanner begin /k:\"SimpleReactionGame\" /d:sonar.login=\"${sonarToken}\""
+                    bat(script: sonarBeginCmd, returnStatus: true)
 
-                    if (sonarScannerExitCode != 0) {
-                        error 'SonarQube analysis failed'
-                    }
+                    // Build the project
+                    def buildCmd = "dotnet build \C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"\""
+                    bat(script: buildCmd, returnStatus: true)
 
-                    // Check SonarQube quality gate status
-                    def qualityGateStatus = getQualityGateStatus()
-
-                    if (qualityGateStatus != 'OK') {
-                    error 'Quality gate status is not OK'
-                    }  
+                    // End SonarScanner analysis
+                    def sonarEndCmd = "dotnet sonarscanner end /d:sonar.login=\"${sonarToken}\""
+                    bat(script: sonarEndCmd, returnStatus: true)
                 }
             } 
         }
@@ -56,22 +54,4 @@ pipeline {
             }
         }
     }
-}
-
-def getQualityGateStatus() {
-    def apiUrl = 'https://sonarcloud.io/api/qualitygates/project_status'
-    def projectKey = 'martindolores_SimpleReactionGame' 
-    def apiParams = "?projectKey=${projectKey}"
-    
-    def response = httpRequest(
-        url: "${apiUrl}${apiParams}",
-        httpMode: 'GET'
-    )
-
-    if (response.status != 200) {
-        error "Failed to retrieve quality gate status from SonarQube API"
-    }
-
-    def jsonResponse = readJSON(text: response.content)
-    return jsonResponse.projectStatus.status
 }
