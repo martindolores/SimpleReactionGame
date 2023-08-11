@@ -21,16 +21,16 @@ pipeline {
             steps {
                 script {
                     // Install the Codacy CLI
-                    sh 'npm install -g @codacy/codacy-analysis-cli'
+                    bat 'npm install -g @codacy/codacy-analysis-cli'
 
                     // Configure Codacy CLI
-                    sh 'codacy-analysis-cli auth login --token YOUR_AUTH_TOKEN'
+                    bat 'codacy-analysis-cli auth login --token YOUR_AUTH_TOKEN'
 
                     // Run Codacy analysis
-                    sh 'codacy-analysis-cli analyze --projectToken YOUR_PROJECT_TOKEN --force'
+                    bat 'codacy-analysis-cli analyze --projectToken YOUR_PROJECT_TOKEN --force'
 
                     // Get the number of Codacy issues from the report
-                    def numIssues = sh(script: 'codacy-analysis-cli report issues -t YOUR_PROJECT_TOKEN -f json | jq length', returnStdout: true).trim()
+                    def numIssues = bat(script: 'codacy-analysis-cli report issues -t YOUR_PROJECT_TOKEN -f json | jq length', returnStdout: true).trim()
 
                     // Check if the number of issues exceeds the threshold (e.g., 50)
                     if (numIssues.toInteger() > 50) {
