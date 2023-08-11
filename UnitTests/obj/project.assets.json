@@ -356,7 +356,7 @@
           "build/NUnit.props": {}
         }
       },
-      "NUnit.ConsoleRunner/3.16.3": {
+      "NUnit.ConsoleRunner/3.14.0": {
         "type": "package"
       },
       "NUnit3TestAdapter/4.5.0": {
@@ -914,10 +914,10 @@
         "nunit.nuspec"
       ]
     },
-    "NUnit.ConsoleRunner/3.16.3": {
-      "sha512": "bhc4f0oVdS70xLaulPu2dMuUWK6hLj5fWLWmUnvbxyEA9w41sZNe6Xb3vPkcp+5OrIqggmtcRbhX+o5hoz62Jg==",
+    "NUnit.ConsoleRunner/3.14.0": {
+      "sha512": "QKXC6nEoH6MWqJt6DvcgEdJhtXlx1IE/3pm1KZ8YbLauNAG3tWXEuSdyDSCGcxM7WPXDD3NdPA8bLBfLZ3HP5w==",
       "type": "package",
-      "path": "nunit.consolerunner/3.16.3",
+      "path": "nunit.consolerunner/3.14.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -925,7 +925,7 @@
         "LICENSE.txt",
         "NOTICES.txt",
         "images/nunit_256.png",
-        "nunit.consolerunner.3.16.3.nupkg.sha512",
+        "nunit.consolerunner.3.14.0.nupkg.sha512",
         "nunit.consolerunner.nuspec",
         "tools/agents/net20/nunit-agent-x86.exe",
         "tools/agents/net20/nunit-agent-x86.exe.config",
@@ -936,16 +936,15 @@
         "tools/agents/net20/nunit.engine.api.xml",
         "tools/agents/net20/nunit.engine.core.dll",
         "tools/agents/net20/testcentric.engine.metadata.dll",
-        "tools/agents/net462/nunit-agent-x86.exe",
-        "tools/agents/net462/nunit-agent-x86.exe.config",
-        "tools/agents/net462/nunit-agent.exe",
-        "tools/agents/net462/nunit-agent.exe.config",
-        "tools/agents/net462/nunit.agent.addins",
-        "tools/agents/net462/nunit.engine.api.dll",
-        "tools/agents/net462/nunit.engine.api.xml",
-        "tools/agents/net462/nunit.engine.core.dll",
-        "tools/agents/net462/testcentric.engine.metadata.dll",
-        "tools/agents/net5.0/Microsoft.Extensions.DependencyModel.dll",
+        "tools/agents/net40/nunit-agent-x86.exe",
+        "tools/agents/net40/nunit-agent-x86.exe.config",
+        "tools/agents/net40/nunit-agent.exe",
+        "tools/agents/net40/nunit-agent.exe.config",
+        "tools/agents/net40/nunit.agent.addins",
+        "tools/agents/net40/nunit.engine.api.dll",
+        "tools/agents/net40/nunit.engine.api.xml",
+        "tools/agents/net40/nunit.engine.core.dll",
+        "tools/agents/net40/testcentric.engine.metadata.dll",
         "tools/agents/net5.0/nunit-agent.deps.json",
         "tools/agents/net5.0/nunit-agent.dll",
         "tools/agents/net5.0/nunit-agent.dll.config",
@@ -955,27 +954,6 @@
         "tools/agents/net5.0/nunit.engine.api.xml",
         "tools/agents/net5.0/nunit.engine.core.dll",
         "tools/agents/net5.0/testcentric.engine.metadata.dll",
-        "tools/agents/net6.0/Microsoft.Extensions.DependencyModel.dll",
-        "tools/agents/net6.0/nunit-agent.deps.json",
-        "tools/agents/net6.0/nunit-agent.dll",
-        "tools/agents/net6.0/nunit-agent.dll.config",
-        "tools/agents/net6.0/nunit-agent.runtimeconfig.json",
-        "tools/agents/net6.0/nunit.agent.addins",
-        "tools/agents/net6.0/nunit.engine.api.dll",
-        "tools/agents/net6.0/nunit.engine.api.xml",
-        "tools/agents/net6.0/nunit.engine.core.dll",
-        "tools/agents/net6.0/testcentric.engine.metadata.dll",
-        "tools/agents/net7.0/Microsoft.Extensions.DependencyModel.dll",
-        "tools/agents/net7.0/nunit-agent.deps.json",
-        "tools/agents/net7.0/nunit-agent.dll",
-        "tools/agents/net7.0/nunit-agent.dll.config",
-        "tools/agents/net7.0/nunit-agent.runtimeconfig.json",
-        "tools/agents/net7.0/nunit.agent.addins",
-        "tools/agents/net7.0/nunit.engine.api.dll",
-        "tools/agents/net7.0/nunit.engine.api.xml",
-        "tools/agents/net7.0/nunit.engine.core.dll",
-        "tools/agents/net7.0/testcentric.engine.metadata.dll",
-        "tools/agents/netcoreapp3.1/Microsoft.Extensions.DependencyModel.dll",
         "tools/agents/netcoreapp3.1/nunit-agent.deps.json",
         "tools/agents/netcoreapp3.1/nunit-agent.dll",
         "tools/agents/netcoreapp3.1/nunit-agent.dll.config",
@@ -1053,7 +1031,7 @@
     "net6.0": [
       "Microsoft.NET.Test.Sdk >= 17.7.0",
       "NUnit >= 3.13.3",
-      "NUnit.ConsoleRunner >= 3.16.3",
+      "NUnit.ConsoleRunner >= 3.13.3",
       "NUnit3TestAdapter >= 4.5.0",
       "SimpleReactionGame >= 1.0.0",
       "coverlet.collector >= 6.0.0"
@@ -1118,7 +1096,7 @@
           },
           "NUnit.ConsoleRunner": {
             "target": "Package",
-            "version": "[3.16.3, )"
+            "version": "[3.13.3, )"
           },
           "NUnit3TestAdapter": {
             "target": "Package",
@@ -1150,5 +1128,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "UnitTests depends on NUnit.ConsoleRunner (>= 3.13.3) but NUnit.ConsoleRunner 3.13.3 was not found. An approximate best match of NUnit.ConsoleRunner 3.14.0 was resolved.",
+      "libraryId": "NUnit.ConsoleRunner",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

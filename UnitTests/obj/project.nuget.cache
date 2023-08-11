@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wvrQcfQoVrcZkreG6cI5xoiQTgW9zaqg9YwMtwZfXqnQeJ+goq9vSC08aH2E9E3bf0VyxRsxs/XH2Ih4eKiEhw==",
+  "dgSpecHash": "8DLJFd1lY1dgzyBMsTVK6SGYThp/6Nu91UJGGe2F4Nef7hRKlWMkCdiTs2R85LNWlaYB7l9T3kJBsZmBT/zi/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\UnitTests\\UnitTests.csproj",
   "expectedPackageFiles": [
@@ -14,9 +14,20 @@
     "C:\\Users\\marti\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\marti\\.nuget\\packages\\nuget.frameworks\\6.5.0\\nuget.frameworks.6.5.0.nupkg.sha512",
     "C:\\Users\\marti\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
-    "C:\\Users\\marti\\.nuget\\packages\\nunit.consolerunner\\3.16.3\\nunit.consolerunner.3.16.3.nupkg.sha512",
+    "C:\\Users\\marti\\.nuget\\packages\\nunit.consolerunner\\3.14.0\\nunit.consolerunner.3.14.0.nupkg.sha512",
     "C:\\Users\\marti\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512",
     "C:\\Users\\marti\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "UnitTests depends on NUnit.ConsoleRunner (>= 3.13.3) but NUnit.ConsoleRunner 3.13.3 was not found. An approximate best match of NUnit.ConsoleRunner 3.14.0 was resolved.",
+      "libraryId": "NUnit.ConsoleRunner",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
