@@ -21,7 +21,6 @@ pipeline {
             steps {
                 // Run SonarScanner analysis using the installed global tool
                 bat "sonar-scanner.bat -D\"sonar.organization=martindolores\" -D\"sonar.projectKey=martindolores_SimpleReactionGame\" -D\"sonar.sources=.\" -D\"sonar.host.url=https://sonarcloud.io\""
-                }
             }
         }
         stage('Security Scan') {
