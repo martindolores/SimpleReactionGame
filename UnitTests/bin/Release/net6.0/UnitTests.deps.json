@@ -11,6 +11,7 @@
           "MSTest.TestAdapter": "3.1.1",
           "MSTest.TestFramework": "3.1.1",
           "Microsoft.NET.Test.Sdk": "17.7.0",
+          "Microsoft.TestPlatform.TestHost": "17.7.0",
           "SimpleReactionGame": "1.0.0",
           "coverlet.collector": "6.0.0"
         },
