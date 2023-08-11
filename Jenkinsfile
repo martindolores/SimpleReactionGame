@@ -19,14 +19,25 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                // Install the Codacy CLI
+                script {
+                    // Install the Codacy CLI
                     sh 'npm install -g @codacy/codacy-analysis-cli'
 
                     // Configure Codacy CLI
-                    sh 'codacy-analysis-cli auth login --token mq1FWIRqwn0TS7uNEnvU'
+                    sh 'codacy-analysis-cli auth login --token YOUR_AUTH_TOKEN'
 
                     // Run Codacy analysis
                     sh 'codacy-analysis-cli analyze --projectToken YOUR_PROJECT_TOKEN --force'
+
+                    // Get the number of Codacy issues from the report
+                    def numIssues = sh(script: 'codacy-analysis-cli report issues -t YOUR_PROJECT_TOKEN -f json | jq length', returnStdout: true).trim()
+
+                    // Check if the number of issues exceeds the threshold (e.g., 50)
+                    if (numIssues.toInteger() > 50) {
+                        currentBuild.result = 'FAILURE'  // Mark the build as failed
+                        error "Number of Codacy issues (${numIssues}) exceeds the threshold (50)"
+                    }
+                }
             }
         }
         stage('Security Scan') {
