@@ -52,6 +52,7 @@ pipeline {
                     def projectDir = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame"
 
                     dir(projectDir) {
+
                         def snykToken 
                         withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
                             snykToken = SNYK_TOKEN
@@ -71,6 +72,13 @@ pipeline {
             }
         }
         stage('Deploy to Staging') {
+            steps {
+                script {
+                    echo ""
+                }
+            }
+        }
+        stage('Integration Tests on Staging') {
             steps {
                 script {
                     echo ""
