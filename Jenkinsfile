@@ -56,7 +56,7 @@ pipeline {
                     def snkyAuthCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe auth \"${snykToken}\"" 
 
                     // Run the Snyk security test using the Snyk CLI
-                    def snykCliCmd = "snyk test --all-projects --all-projects --all-projects --json --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects"
+                    def snykCliCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe test --all-projects "
                     def snykCliResult = sh(script: snykCliCmd, returnStatus: true)
                     
                     if (snykCliResult != 0) {
