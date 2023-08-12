@@ -75,9 +75,9 @@ pipeline {
             steps {
                 // Deploy to Heroku using the Heroku CLI
                 withCredentials([string(credentialsId: 'heroku-token', variable: 'HEROKU_API_KEY')]) {
-                    bat 'heroku login'
-                    bat 'heroku container:push web -a simple-reaction-game-stage'
-                    bat 'heroku container:release web -a simple-reaction-game-stage'
+                    bat 'C:\\Program Files\\heroku\\bin\\heroku.cmd login'
+                    bat 'C:\\Program Files\\heroku\\bin\\heroku.cmd container:push web -a simple-reaction-game-stage'
+                    bat 'C:\\Program Files\\heroku\\bin\\heroku.cmd container:release web -a simple-reaction-game-stage'
                 }
             }
         }
