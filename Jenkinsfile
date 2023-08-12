@@ -53,12 +53,14 @@ pipeline {
                     withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
                         snykToken = SNYK_TOKEN
                     }
-                    // Perform an API call to Snyk to trigger a security test
-                    def snykApiCmd = "curl -X POST -H 'Authorization: token ${snykToken}' https://snyk.io/api/v1/rest"
-                    def snykApiResult = sh(script: snykApiCmd, returnStatus: true)
+                    def snkyAuthCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe auth \"${snykToken}\"" 
+
+                    // Run the Snyk security test using the Snyk CLI
+                    def snykCliCmd = "snyk test --all-projects --all-projects --all-projects --json --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects"
+                    def snykCliResult = sh(script: snykCliCmd, returnStatus: true)
                     
-                    if (snykApiResult != 0) {
-                        error 'Snyk API call failed'
+                    if (snykCliResult != 0) {
+                        error 'Snyk CLI command failed'
                     }
                 }
             }
