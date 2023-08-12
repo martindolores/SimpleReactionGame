@@ -8,6 +8,9 @@
           "build/netstandard1.0/coverlet.collector.targets": {}
         }
       },
+      "dotnet-framework-sonarscanner/5.13.0": {
+        "type": "package"
+      },
       "Microsoft.CodeCoverage/17.5.0": {
         "type": "package",
         "compile": {
@@ -385,6 +388,9 @@
       "SimpleReactionGame/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "dotnet-framework-sonarscanner": "5.13.0"
+        },
         "compile": {
           "bin/placeholder/SimpleReactionGame.dll": {}
         },
@@ -446,6 +452,52 @@
         "coverlet-icon.png",
         "coverlet.collector.3.2.0.nupkg.sha512",
         "coverlet.collector.nuspec"
+      ]
+    },
+    "dotnet-framework-sonarscanner/5.13.0": {
+      "sha512": "NQLDvaiC8wmgbMW9trA5a2a/fHNh13JoVkCceQjj+Ku3Cv2VH8SIDqUTyV7c+GjEvwJMhHXxEe6aUrXyxGzFHw==",
+      "type": "package",
+      "path": "dotnet-framework-sonarscanner/5.13.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotnet-framework-sonarscanner.5.13.0.nupkg.sha512",
+        "dotnet-framework-sonarscanner.nuspec",
+        "tools/Google.Protobuf.dll",
+        "tools/Microsoft.VisualStudio.Setup.Configuration.Interop.dll",
+        "tools/Newtonsoft.Json.dll",
+        "tools/SonarQube.Analysis.xml",
+        "tools/SonarScanner.MSBuild.Common.dll",
+        "tools/SonarScanner.MSBuild.PostProcessor.dll",
+        "tools/SonarScanner.MSBuild.PreProcessor.dll",
+        "tools/SonarScanner.MSBuild.Shim.dll",
+        "tools/SonarScanner.MSBuild.TFS.dll",
+        "tools/SonarScanner.MSBuild.TFSProcessor.exe",
+        "tools/SonarScanner.MSBuild.TFSProcessor.exe.config",
+        "tools/SonarScanner.MSBuild.Tasks.dll",
+        "tools/SonarScanner.MSBuild.exe",
+        "tools/SonarScanner.MSBuild.exe.config",
+        "tools/System.Buffers.dll",
+        "tools/System.Memory.dll",
+        "tools/System.Net.Http.dll",
+        "tools/System.Runtime.CompilerServices.Unsafe.dll",
+        "tools/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "tools/System.Security.Cryptography.Algorithms.dll",
+        "tools/System.Security.Cryptography.Encoding.dll",
+        "tools/System.Security.Cryptography.Primitives.dll",
+        "tools/System.Security.Cryptography.X509Certificates.dll",
+        "tools/System.ValueTuple.dll",
+        "tools/Targets/SonarQube.Integration.ImportBefore.targets",
+        "tools/Targets/SonarQube.Integration.targets",
+        "tools/hostfxr.dll",
+        "tools/hostpolicy.dll",
+        "tools/sonar-scanner-4.8.0.2856/bin/sonar-scanner",
+        "tools/sonar-scanner-4.8.0.2856/bin/sonar-scanner-debug",
+        "tools/sonar-scanner-4.8.0.2856/bin/sonar-scanner-debug.bat",
+        "tools/sonar-scanner-4.8.0.2856/bin/sonar-scanner.bat",
+        "tools/sonar-scanner-4.8.0.2856/conf/sonar-scanner.properties",
+        "tools/sonar-scanner-4.8.0.2856/lib/sonar-scanner-cli-4.8.0.2856.jar"
       ]
     },
     "Microsoft.CodeCoverage/17.5.0": {
@@ -999,7 +1051,8 @@
       "NUnit.Analyzers >= 3.6.1",
       "NUnit3TestAdapter >= 4.4.2",
       "SimpleReactionGame >= 1.0.0",
-      "coverlet.collector >= 3.2.0"
+      "coverlet.collector >= 3.2.0",
+      "dotnet-framework-sonarscanner >= 5.13.0"
     ]
   },
   "packageFolders": {
@@ -1070,6 +1123,10 @@
           "coverlet.collector": {
             "target": "Package",
             "version": "[3.2.0, )"
+          },
+          "dotnet-framework-sonarscanner": {
+            "target": "Package",
+            "version": "[5.13.0, )"
           }
         },
         "imports": [

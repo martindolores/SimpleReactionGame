@@ -48,7 +48,21 @@ pipeline {
         }
         stage('Security Scan') {
             steps {
-                echo ""
+                // Define your Snyk token (replace 'YOUR_SNYK_TOKEN' with the actual token)
+                def snykToken 
+                    withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
+                        snykToken = SNYK_TOKEN
+                    }
+
+                // Run Snyk security scan
+                bat "snyk test --all-projects --all-projects --json --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects"
+
+                // Read the Snyk test results from the generated JSON file
+                def snykTestResults = readFile(file: 'snyk-report.json')
+
+                // Echo the Snyk test results
+                echo "Snyk Security Scan Results:"
+                echo snykTestResults
             }
         }
         stage('Deploy to Staging') {

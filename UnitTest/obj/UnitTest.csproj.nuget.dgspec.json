@@ -44,6 +44,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "dotnet-framework-sonarscanner": {
+              "target": "Package",
+              "version": "[5.13.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -128,6 +134,10 @@
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.2.0, )"
+            },
+            "dotnet-framework-sonarscanner": {
+              "target": "Package",
+              "version": "[5.13.0, )"
             }
           },
           "imports": [

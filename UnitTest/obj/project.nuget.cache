@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "X0xxV8b6YL+YFgB3dView11u5mcRQtqc1jH7iaR3m9lKENrhEgEIkVwNg4GESqQfvSzBOXwhjqPLj3sGLFV94A==",
+  "dgSpecHash": "1A+fU1pGPi8EMj8reUl+4iOB95iYnXGnSsMawYvsB6+bBrDcJ6BihDzlQtMHsoMCge8QDKWG6yyshnaLzt4Nxg==",
   "success": true,
   "projectFilePath": "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\UnitTest\\UnitTest.csproj",
   "expectedPackageFiles": [
     "C:\\Windows\\system32\\config\\systemprofile\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
+    "C:\\Windows\\system32\\config\\systemprofile\\.nuget\\packages\\dotnet-framework-sonarscanner\\5.13.0\\dotnet-framework-sonarscanner.5.13.0.nupkg.sha512",
     "C:\\Windows\\system32\\config\\systemprofile\\.nuget\\packages\\microsoft.codecoverage\\17.5.0\\microsoft.codecoverage.17.5.0.nupkg.sha512",
     "C:\\Windows\\system32\\config\\systemprofile\\.nuget\\packages\\microsoft.net.test.sdk\\17.5.0\\microsoft.net.test.sdk.17.5.0.nupkg.sha512",
     "C:\\Windows\\system32\\config\\systemprofile\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
