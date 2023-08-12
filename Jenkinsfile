@@ -57,7 +57,7 @@ pipeline {
 
                     // Run the Snyk security test using the Snyk CLI
                     def snykCliCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe test --all-projects "
-                    def snykCliResult = sh(script: snykCliCmd, returnStatus: true)
+                    def snykCliResult = bat(script: snykCliCmd, returnStatus: true)
                     
                     if (snykCliResult != 0) {
                         error 'Snyk CLI command failed'
