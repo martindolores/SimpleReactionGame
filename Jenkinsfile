@@ -54,7 +54,7 @@ pipeline {
                         snykToken = SNYK_TOKEN
                     }
                     // Perform an API call to Snyk to trigger a security test
-                    def snykApiCmd = "curl -X POST -H 'Authorization: token ${snykToken}' https://snyk.io/api/v1/test"
+                    def snykApiCmd = "curl -X POST -H 'Authorization: token ${snykToken}' https://snyk.io/api/v1/rest"
                     def snykApiResult = sh(script: snykApiCmd, returnStatus: true)
                     
                     if (snykApiResult != 0) {
