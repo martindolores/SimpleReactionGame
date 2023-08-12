@@ -53,7 +53,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
                         snykToken = SNYK_TOKEN
                     }
-                    def snkyAuthCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe auth f3429c82-88fb-42b6-8060-eb8d9edf0c15" 
+                    def snkyAuthCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe auth ${snykToken}" 
 
                     // Run the Snyk security test using the Snyk CLI
                     def snykCliCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe test --all-projects "
