@@ -54,7 +54,8 @@ pipeline {
                         snykToken = SNYK_TOKEN
                     }
                     def snkyAuthCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe auth ${snykToken}" 
-                    echo "${snykToken}"
+                    def snkyAuthResukt = bat(script: snkyAuthCmd, returnStatus: true)
+                    
                     // Run the Snyk security test using the Snyk CLI
                     def snykCliCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe test --all-projects "
                     def snykCliResult = bat(script: snykCliCmd, returnStatus: true)
