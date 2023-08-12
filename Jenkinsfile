@@ -48,13 +48,11 @@ pipeline {
         }
         stage('Security Scan') {
             steps {
-                // Define your Snyk token (replace 'YOUR_SNYK_TOKEN' with the actual token)
-                def snykToken 
+                script {
+                    def snykToken 
                     withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
                         snykToken = SNYK_TOKEN
                     }
-
-                script {
                     // Perform an API call to Snyk to trigger a security test
                     def snykApiCmd = "curl -X POST -H 'Authorization: token ${snykToken}' https://snyk.io/api/v1/test"
                     def snykApiResult = sh(script: snykApiCmd, returnStatus: true)
