@@ -54,15 +54,15 @@ pipeline {
                         snykToken = SNYK_TOKEN
                     }
 
-                // Run Snyk security scan
-                bat "snyk test --all-projects --all-projects --json --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects --all-projects"
-
-                // Read the Snyk test results from the generated JSON file
-                def snykTestResults = readFile(file: 'snyk-report.json')
-
-                // Echo the Snyk test results
-                echo "Snyk Security Scan Results:"
-                echo snykTestResults
+                script {
+                    // Perform an API call to Snyk to trigger a security test
+                    def snykApiCmd = "curl -X POST -H 'Authorization: token ${snykToken}' https://snyk.io/api/v1/test"
+                    def snykApiResult = sh(script: snykApiCmd, returnStatus: true)
+                    
+                    if (snykApiResult != 0) {
+                        error 'Snyk API call failed'
+                    }
+                }
             }
         }
         stage('Deploy to Staging') {
