@@ -2,5 +2,5 @@ projectKey=SimpleReactionGame
 serverUrl=http://localhost:9000
 serverVersion=10.1.0.73491
 dashboardUrl=http://localhost:9000/dashboard?id=SimpleReactionGame
-ceTaskId=AYnoHl54XqGI79-pZgGG
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYnoHl54XqGI79-pZgGG
+ceTaskId=AYnoIB9GXqGI79-pZgGH
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYnoIB9GXqGI79-pZgGH

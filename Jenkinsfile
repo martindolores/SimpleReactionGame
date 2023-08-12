@@ -80,15 +80,15 @@ pipeline {
                         string(credentialsId: 'heroku-password', variable: 'HEROKU_CREDENTIALS_PASSWORD')
                     ]) {
                         def herokuLoginCmd = """
-                            echo %HEROKU_CREDENTIALS_EMAIL% 
+                            echo %HEROKU_CREDENTIALS_EMAIL% | "C:\\Program Files\\heroku\\bin\\heroku.cmd" login -i
                             echo %HEROKU_CREDENTIALS_PASSWORD% | "C:\\Program Files\\heroku\\bin\\heroku.cmd" login -i
                         """
                         def herokuLoginResult = bat(script: herokuLoginCmd, returnStatus: true)
                         
-                        def herokuPushCmd = 'C:\\Program Files\\heroku\\bin\\heroku.cmd container:push web -a simple-reaction-game-stage'
+                        def herokuPushCmd = "C:\\Program Files\\heroku\\bin\\heroku.cmd container:push web -a simple-reaction-game-stage"
                         def herokuPushResult = bat(script: herokuPushCmd, returnStatus: true)
 
-                        def herokuReleaseCmd = 'C:\\Program Files\\heroku\\bin\\heroku.cmd container:release web -a simple-reaction-game-stage'
+                        def herokuReleaseCmd = "C:\\Program Files\\heroku\\bin\\heroku.cmd container:release web -a simple-reaction-game-stage"
                         def herokuReleaseResult = bat(script: herokuReleaseCmd, returnStatus: true)
                     }
                 }
