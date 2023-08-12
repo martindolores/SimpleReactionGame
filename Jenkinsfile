@@ -74,7 +74,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
-                    bat "scp -i C:\\Users\\marti\\Downloads\\jenkins-linux.pem -r C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame ec2-user@54.253.240.3:/home/ec2-user/Staging"
+                    bat '"scp -i C:\\Users\\marti\\Downloads\\jenkins-linux.pem -r "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame" ec2-user@54.253.240.3:/home/ec2-user/Staging"'
                 }
             }
         }
