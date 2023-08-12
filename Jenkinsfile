@@ -74,12 +74,23 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
-                    // Deploy to Heroku using the Heroku CLI
-                    withCredentials([string(credentialsId: 'heroku-token', variable: 'HEROKU_API_KEY')]) {
-                        bat 'C:\\Program Files\\heroku\\bin\\heroku.cmd login'
-                        bat 'C:\\Program Files\\heroku\\bin\\heroku.cmd container:push web -a simple-reaction-game-stage'
-                        bat 'C:\\Program Files\\heroku\\bin\\heroku.cmd container:release web -a simple-reaction-game-stage'
-                }
+                    // Use input redirection to provide email and password to the Heroku login command
+                    withCredentials([
+                        string(credentialsId: 'heroku-email', variable: 'HEROKU_CREDENTIALS_EMAIL'),
+                        string(credentialsId: 'heroku-password', variable: 'HEROKU_CREDENTIALS_PASSWORD')
+                    ]) {
+                        def herokuLoginCmd = """
+                            echo %HEROKU_CREDENTIALS_EMAIL% | "C:\\Program Files\\heroku\\bin\\heroku.cmd" login
+                            echo %HEROKU_CREDENTIALS_PASSWORD% | "C:\\Program Files\\heroku\\bin\\heroku.cmd" login
+                        """
+                        def herokuLoginResult = bat(script: herokuLoginCmd, returnStatus: true)
+                        
+                        def herokuPushCmd = 'C:\\Program Files\\heroku\\bin\\heroku.cmd container:push web -a simple-reaction-game-stage'
+                        def herokuPushResult = bat(script: herokuPushCmd, returnStatus: true)
+
+                        def herokuReleaseCmd = 'C:\\Program Files\\heroku\\bin\\heroku.cmd container:release web -a simple-reaction-game-stage'
+                        def herokuReleaseResult = bat(script: herokuReleaseCmd, returnStatus: true)
+                    }
                 }
             }
         }
