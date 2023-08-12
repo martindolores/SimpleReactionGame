@@ -49,19 +49,23 @@ pipeline {
         stage('Security Scan') {
             steps {
                 script {
-                    def snykToken 
-                    withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
-                        snykToken = SNYK_TOKEN
-                    }
-                    def snkyAuthCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe auth ${snykToken}" 
-                    def snkyAuthResukt = bat(script: snkyAuthCmd, returnStatus: true)
-                    
-                    // Run the Snyk security test using the Snyk CLI
-                    def snykCliCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe test --all-projects "
-                    def snykCliResult = bat(script: snykCliCmd, returnStatus: true)
-                    
-                    if (snykCliResult != 0) {
-                        error 'Snyk CLI command failed'
+                    def projectDir = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame"
+
+                    dir(projectDir) {
+                        def snykToken 
+                        withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
+                            snykToken = SNYK_TOKEN
+                        }
+                        def snkyAuthCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe auth ${snykToken}" 
+                        def snkyAuthResukt = bat(script: snkyAuthCmd, returnStatus: true)
+                        
+                        // Run the Snyk security test using the Snyk CLI
+                        def snykCliCmd = "C:\\Users\\marti\\Downloads\\snyk-win.exe test --all-projects"
+                        def snykCliResult = bat(script: snykCliCmd, returnStatus: true)
+                        
+                        if (snykCliResult != 0) {
+                            error 'Snyk CLI command failed'
+                        }
                     }
                 }
             }
