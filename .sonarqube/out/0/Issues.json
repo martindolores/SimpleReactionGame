@@ -103,6 +103,40 @@
         {
           "ruleId": "CS8618",
           "level": "warning",
+          "message": "Non-nullable field 'controller' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional%20Practice%20In%20Information%20Technology/Task%206.2C/SimpleReactionGame/SimpleReactionGame/SimpleReactionMachine.cs",
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 33,
+                  "endLine": 106,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional%20Practice%20In%20Information%20Technology/Task%206.2C/SimpleReactionGame/SimpleReactionGame/SimpleReactionMachine.cs",
+                "region": {
+                  "startLine": 106,
+                  "startColumn": 33,
+                  "endLine": 106,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
           "message": "Non-nullable field 'CurrentState' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
           "locations": [
             {
@@ -194,40 +228,6 @@
                   "startColumn": 25,
                   "endLine": 24,
                   "endColumn": 28
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8618",
-          "level": "warning",
-          "message": "Non-nullable field 'controller' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional%20Practice%20In%20Information%20Technology/Task%206.2C/SimpleReactionGame/SimpleReactionGame/SimpleReactionMachine.cs",
-                "region": {
-                  "startLine": 106,
-                  "startColumn": 33,
-                  "endLine": 106,
-                  "endColumn": 43
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional%20Practice%20In%20Information%20Technology/Task%206.2C/SimpleReactionGame/SimpleReactionGame/SimpleReactionMachine.cs",
-                "region": {
-                  "startLine": 106,
-                  "startColumn": 33,
-                  "endLine": 106,
-                  "endColumn": 43
                 }
               }
             }
