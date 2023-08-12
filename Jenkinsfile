@@ -80,8 +80,9 @@ pipeline {
                         string(credentialsId: 'heroku-password', variable: 'HEROKU_CREDENTIALS_PASSWORD')
                     ]) {
                         def herokuLoginCmd = """
-                            echo %HEROKU_CREDENTIALS_EMAIL% | "C:\\Program Files\\heroku\\bin\\heroku.cmd" login
-                            echo %HEROKU_CREDENTIALS_PASSWORD% | "C:\\Program Files\\heroku\\bin\\heroku.cmd" login
+                            echo %HEROKU_CREDENTIALS_EMAIL%
+                            echo %HEROKU_CREDENTIALS_PASSWORD% 
+                            | "C:\\Program Files\\heroku\\bin\\heroku.cmd" login
                         """
                         def herokuLoginResult = bat(script: herokuLoginCmd, returnStatus: true)
                         
