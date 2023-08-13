@@ -156,6 +156,27 @@
               "resultFile": {
                 "uri": "file:///C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional%20Practice%20In%20Information%20Technology/Task%206.2C/SimpleReactionGame/UnitTest/UnitTest.cs",
                 "region": {
+                  "startLine": 161,
+                  "startColumn": 13,
+                  "endLine": 161,
+                  "endColumn": 98
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA2241",
+          "level": "note",
+          "message": "Provide correct arguments to formatting methods",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional%20Practice%20In%20Information%20Technology/Task%206.2C/SimpleReactionGame/UnitTest/UnitTest.cs",
+                "region": {
                   "startLine": 135,
                   "startColumn": 13,
                   "endLine": 135,
@@ -201,27 +222,6 @@
                   "startLine": 174,
                   "startColumn": 13,
                   "endLine": 174,
-                  "endColumn": 98
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CA2241",
-          "level": "note",
-          "message": "Provide correct arguments to formatting methods",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional%20Practice%20In%20Information%20Technology/Task%206.2C/SimpleReactionGame/UnitTest/UnitTest.cs",
-                "region": {
-                  "startLine": 161,
-                  "startColumn": 13,
-                  "endLine": 161,
                   "endColumn": 98
                 }
               }
