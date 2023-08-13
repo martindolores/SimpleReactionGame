@@ -74,16 +74,21 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
-                    echo "Copying files to the EC2 instance..." 
                     bat 'echo y | plink -i "C:\\Users\\marti\\Downloads\\jenkins-linux.ppk" ec2-user@54.253.240.3 exit'
                     bat 'pscp -i "C:\\Users\\marti\\Downloads\\jenkins-linux.ppk" -batch -r "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame" ec2-user@54.253.240.3:/home/ec2-user/Staging'
-                    echo "Files copied successfully."
                 }
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo ""
+                script {
+                    def sshKeyPath = "C:\\Users\\marti\\Downloads\\jenkins-linux.ppk"
+                    def stagingDirectory = "/home/ec2-user/Staging/SimpleReactionGame"
+                    def dotnetTestCommand = "dotnet test"
+
+                    def sshCommand = "plink -i \"${sshKeyPath}\" ec2-user@54.253.240.3 \"cd ${stagingDirectory} && ${dotnetTestCommand}\""
+                    bat(sshCommand)
+                }
             }
         }
         stage('Deploy to Production') {
