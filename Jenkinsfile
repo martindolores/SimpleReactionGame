@@ -37,7 +37,6 @@ pipeline {
                 script {
                     // Using SonarQube to run Code Analysis
                     withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
-                        bat "dotnet tool install --global dotnet-sonarscanner"
                         bat "dotnet sonarscanner begin /k:SimpleReactionGame /d:sonar.login=\"${SONAR_TOKEN}\""
                         bat "dotnet build \"${PROJECT_PATH}\""
                         bat "dotnet sonarscanner end /d:sonar.login=\"${SONAR_TOKEN}\""
