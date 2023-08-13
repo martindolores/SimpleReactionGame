@@ -75,7 +75,7 @@ pipeline {
             steps {
                 script {
                     echo "Copying files to the EC2 instance..." 
-                    bat 'pscp -i "C:\\Users\\marti\\Downloads\\jenkins-linux.ppk" -r "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame" ec2-user@54.253.240.3:/home/ec2-user/Staging'
+                    bat 'pscp -i "C:\\Users\\marti\\Downloads\\jenkins-linux.ppk" -batch -r "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame" ec2-user@54.253.240.3:/home/ec2-user/Staging'
                     echo "Files copied successfully."
                 }
             }
