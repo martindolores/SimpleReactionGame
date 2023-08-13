@@ -93,7 +93,10 @@ pipeline {
         }
         stage('Deploy to Production') {
             steps {
-                echo ""
+                script {
+                    bat 'echo y | plink -i "C:\\Users\\marti\\Downloads\\jenkins-prod.ppk" ec2-user@13.211.239.85 exit'
+                    bat 'pscp -i "C:\\Users\\marti\\Downloads\\jenkins-prod.ppk" -batch -r "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame" ec2-user@13.211.239.85:/home/ec2-user/Production'
+                }
             }
         }
     }
