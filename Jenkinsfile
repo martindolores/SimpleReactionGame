@@ -75,7 +75,7 @@ pipeline {
             steps {
                 script {
                     // Running tests using dotnet test on Staging
-                    bat "plink -i \"${STAGING_SSH_KEY_PATH}\" ${STAGING_SERVER} \"cd ${STAGING_DIRECTORY} && dotnet test\""
+                    bat "plink -i \"${STAGING_SSH_KEY_PATH}\" ${STAGING_SERVER} \"cd ${STAGING_DIRECTORY}\"/SimpleReactionGame && dotnet test\""
                 }
             }
         }
