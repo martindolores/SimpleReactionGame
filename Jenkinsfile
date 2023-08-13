@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         MSBUILD_PATH = "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe"
-        SOLUTION_PATH = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame\\SimpleReactionGame.sln"
+        PROJECT_PATH = "C:\\Users\\marti\\Documents\\Study\\Deakin\\2023\\T1\\Professional Practice In Information Technology\\Task 6.2C\\SimpleReactionGame"
         NUNIT_CONSOLE_PATH = "C:\\Program Files\\NUnit.Console-3.15.4\\bin\\net6.0\\nunit3-console.exe"
         SNYK_PATH = "C:\\Users\\marti\\Downloads\\snyk-win.exe"
         STAGING_SSH_KEY_PATH = "C:\\Users\\marti\\Downloads\\jenkins-linux.ppk"
@@ -20,15 +20,15 @@ pipeline {
                 cleanWs()
 
                 // Cleaning Solution and Build main solution using MSBuild (Microsoft Build)
-                bat "\"${MSBUILD_PATH}\" \"${SOLUTION_PATH}\" /t:Clean /p:Configuration=Release"
-                bat "\"${MSBUILD_PATH}\" \"${SOLUTION_PATH}\" /t:Build /p:Configuration=Release"
+                bat "\"${MSBUILD_PATH}\" \"${PROJECT_PATH}\"/SimpleReactionGame.sln /t:Clean /p:Configuration=Release"
+                bat "\"${MSBUILD_PATH}\" \"${PROJECT_PATH}\"/SimpleReactionGame.sln /t:Build /p:Configuration=Release"
             }
         }
 
         stage('Unit and Integration Tests') {
             steps {
                 // Using NUnit to run unit tests
-                bat "\"${NUNIT_CONSOLE_PATH}\" \"${SOLUTION_PATH}\"/UnitTest/bin/Release/net6.0/UnitTest.dll"
+                bat "\"${NUNIT_CONSOLE_PATH}\" \"${PROJECT_PATH}\"/UnitTest/bin/Release/net6.0/UnitTest.dll"
             }
         }
 
@@ -39,7 +39,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                         bat "dotnet tool install --global dotnet-sonarscanner"
                         bat "dotnet sonarscanner begin /k:SimpleReactionGame /d:sonar.login=\"${SONAR_TOKEN}\""
-                        bat "dotnet build \"${SOLUTION_PATH}\""
+                        bat "dotnet build \"${PROJECT_PATH}\""
                         bat "dotnet sonarscanner end /d:sonar.login=\"${SONAR_TOKEN}\""
                     }
                 }
@@ -64,7 +64,7 @@ pipeline {
                 script {
                     // Deploying to EC2 Staging Instance
                     bat "echo y | plink -i \"${STAGING_SSH_KEY_PATH}\" ${STAGING_SERVER} exit"
-                    bat "pscp -i \"${STAGING_SSH_KEY_PATH}\" -batch -r \"${SOLUTION_PATH}\" ${STAGING_SERVER}:${STAGING_DIRECTORY}"
+                    bat "pscp -i \"${STAGING_SSH_KEY_PATH}\" -batch -r \"${PROJECT_PATH}\" ${STAGING_SERVER}:${STAGING_DIRECTORY}"
                 }
             }
         }
@@ -83,7 +83,7 @@ pipeline {
                 script {
                     // Deploying to EC2 Production Instance
                     bat "echo y | plink -i \"${PROD_SSH_KEY_PATH}\" ${PROD_SERVER} exit"
-                    bat "pscp -i \"${PROD_SSH_KEY_PATH}\" -batch -r \"${SOLUTION_PATH}\" ${PROD_SERVER}:${PROD_DIRECTORY}"
+                    bat "pscp -i \"${PROD_SSH_KEY_PATH}\" -batch -r \"${PROJECT_PATH}\" ${PROD_SERVER}:${PROD_DIRECTORY}"
                 }
             }
         }
