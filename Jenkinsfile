@@ -74,22 +74,15 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
-                    // echo "Copying files to the EC2 instance..."
-                    // bat 'scp -i "C:/Users/marti/Downloads/jenkins-linux.pem" -r "C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional Practice In Information Technology/Task 6.2C/SimpleReactionGame" ec2-user@54.253.240.3:/home/ec2-user/Staging'
-                    // echo "Files copied successfully."
-
-                    def sshExitCode
-                    def sshCommand
-                    def instanceIP = "54.253.240.3"  // Change to your EC2 instance's public IP
-
-                    sshCommand = "ssh -i \"C:/Users/marti/Downloads/jenkins-linux.pem\" ec2-user@${instanceIP} echo 'SSH connection successful'"
-                    sshExitCode = bat(script: sshCommand, returnStatus: true)
-
-                    if (sshExitCode == 0) {
-                        echo "SSH connection to EC2 instance is successful."
-                    } else {
-                        error "Failed to establish SSH connection to EC2 instance. Exit code: ${sshExitCode}"
+                    echo "Copying files to the EC2 instance..."
+                    sshagent(credentials: ['ssh-credentials']) {
+                        bat '''
+                            scp -i "C:/Users/marti/Downloads/jenkins-linux.pem" \
+                            -r "C:/Users/marti/Documents/Study/Deakin/2023/T1/Professional Practice In Information Technology/Task 6.2C/SimpleReactionGame" \
+                            ec2-user@54.253.240.3:/home/ec2-user/Staging
+                        '''
                     }
+                    echo "Files copied successfully."
                 }
             }
         }
