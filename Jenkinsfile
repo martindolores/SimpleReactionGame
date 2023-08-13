@@ -50,9 +50,12 @@ pipeline {
                 script {
                     // Using Snyk to run Security Code Scan
                     withCredentials([string(credentialsId: 'snyk-token', variable: 'SNYK_TOKEN')]) {
-                        bat "${SNYK_PATH} auth ${SNYK_TOKEN}"
-                        bat "${SNYK_PATH} test --all-projects"
-                        bat 'exit 0'  // Ignore Snyk exit code for now
+                        dir(PROJECT_PATH)
+                        {
+                            bat "${SNYK_PATH} auth ${SNYK_TOKEN}"
+                            bat "${SNYK_PATH} test --all-projects"
+                            bat 'exit 0'  // Ignore Snyk exit code for now
+                        }
                     }
                 }
             }
