@@ -8,7 +8,7 @@ pipeline {
         SNYK_PATH = "C:\\Users\\marti\\Downloads\\snyk-win.exe"
         STAGING_SSH_KEY_PATH = "C:\\Users\\marti\\Downloads\\jenkins-linux.ppk"
         STAGING_SERVER = "ec2-user@54.253.240.3"
-        STAGING_DIRECTORY = "/home/ec2-user/Staging/SimpleReactionGame"
+        STAGING_DIRECTORY = "/home/ec2-user/Staging/"
         PROD_SSH_KEY_PATH = "C:\\Users\\marti\\Downloads\\jenkins-prod.ppk"
         PROD_SERVER = "ec2-user@13.211.239.85"
         PROD_DIRECTORY = "/home/ec2-user/Production"
