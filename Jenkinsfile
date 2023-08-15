@@ -53,8 +53,24 @@ pipeline {
                         dir(PROJECT_PATH)
                         {
                             bat "${SNYK_PATH} auth ${SNYK_TOKEN}"
-                            bat "${SNYK_PATH} test --all-projects"
-                            bat 'exit 0'  // Ignore Snyk exit code for now
+                            
+                            def snykTestCmd = bat "${SNYK_PATH} test --all-projects"
+                            def snykTestResult = bat(script: snykCmd)
+                            
+                            def exitCode = currentBuild.rawBuild.getResult().getExitCode()
+
+                            if (exitCode != 0) {
+                                currentBuild.result = "FAILURE"
+                                echo "Snyk Security scan failed."
+                                emailext body: "Snyk security scan failed for ${env.JOB_NAME}",
+                                        subject: "Snyk Security Scan Failure",
+                                        to: "martindolores65@gmail.com"
+                            } else {
+                                echo "Snyk Security scan success."
+                                emailext body: "Snyk security scan success for ${env.JOB_NAME}",
+                                        subject: "Snyk Security Scan Success",
+                                        to: "martindolores65@gmail.com"
+                            }
                         }
                     }
                 }
