@@ -27,8 +27,24 @@ pipeline {
 
         stage('Unit and Integration Tests') {
             steps {
-                // Using NUnit to run unit tests
-                bat "\"${NUNIT_CONSOLE_PATH}\" \"${PROJECT_PATH}\"/UnitTest/bin/Release/net6.0/UnitTest.dll"
+                script {
+                    // Using NUnit to run unit tests
+                    def nunitTestCmd = "\"${NUNIT_CONSOLE_PATH}\" \"${PROJECT_PATH}\"/UnitTest/bin/Release/net6.0/UnitTest.dll"
+                    def nunitTestResult = bat(script: nunitTestCmd, returnStatus: true)
+
+                    if (nunitTestResult != 0) {
+                                    currentBuild.result = "FAILURE"
+                                    echo "NUnit Test failed."
+                                    emailext body: "NUnit test failed for ${env.JOB_NAME}",
+                                            subject: "NUnit Test Failure",
+                                            to: "martindolores65@gmail.com"
+                                } else {
+                                    echo "NUnit Test Success."
+                                    emailext body: "NUnit test success for ${env.JOB_NAME}",
+                                            subject: "NUnit Test Success",
+                                            to: "martindolores65@gmail.com"
+                    }
+                }
             }
         }
 
@@ -80,6 +96,7 @@ pipeline {
                 script {
                     // Deploying to EC2 Staging Instance
                     bat "echo y | plink -i \"${STAGING_SSH_KEY_PATH}\" ${STAGING_SERVER} exit"
+                    bat "plink -i \"${STAGING_SSH_KEY_PATH}\" ${STAGING_SERVER} sudo rm -r /home/ec2-user/Staging/SimpleReactionGame"
                     bat "pscp -i \"${STAGING_SSH_KEY_PATH}\" -batch -r \"${PROJECT_PATH}\" ${STAGING_SERVER}:${STAGING_DIRECTORY}"
                 }
             }
@@ -89,7 +106,21 @@ pipeline {
             steps {
                 script {
                     // Running tests using dotnet test on Staging
-                    bat "plink -i \"${STAGING_SSH_KEY_PATH}\" ${STAGING_SERVER} \"cd ${STAGING_DIRECTORY}/SimpleReactionGame && dotnet test\""
+                    def nunitStageTestCmd = "plink -i \"${STAGING_SSH_KEY_PATH}\" ${STAGING_SERVER} \"cd ${STAGING_DIRECTORY}/SimpleReactionGame && dotnet test\""
+                    def nunitStageTestResult = bat(script: nunitStageTestCmd, returnStatus: true)
+
+                    if (nunitTestResult != 0) {
+                                currentBuild.result = "FAILURE"
+                                echo "NUnit Stage Test failed."
+                                emailext body: "NUnit stage test failed for ${env.JOB_NAME}",
+                                        subject: "NUnit Stage Test Failure",
+                                        to: "martindolores65@gmail.com"
+                            } else {
+                                echo "NUnit Stage Test Success."
+                                emailext body: "NUnit stage test success for ${env.JOB_NAME}",
+                                        subject: "NUnit Stage Test Success",
+                                        to: "martindolores65@gmail.com"
+                    }
                 }
             }
         }
@@ -99,6 +130,7 @@ pipeline {
                 script {
                     // Deploying to EC2 Production Instance
                     bat "echo y | plink -i \"${PROD_SSH_KEY_PATH}\" ${PROD_SERVER} exit"
+                    bat "plink -i \"${PROD_SSH_KEY_PATH}\" ${PROD_SERVER} sudo rm -r /home/ec2-user/Production/SimpleReactionGame"
                     bat "pscp -i \"${PROD_SSH_KEY_PATH}\" -batch -r \"${PROJECT_PATH}\" ${PROD_SERVER}:${PROD_DIRECTORY}"
                 }
             }
