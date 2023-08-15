@@ -37,12 +37,14 @@ pipeline {
                                     echo "NUnit Test failed."
                                     emailext body: "NUnit test failed for ${env.JOB_NAME}",
                                             subject: "NUnit Test Failure",
-                                            to: "martindolores65@gmail.com"
+                                            to: "martindolores65@gmail.com",
+                                            attachLog: true
                                 } else {
                                     echo "NUnit Test Success."
                                     emailext body: "NUnit test success for ${env.JOB_NAME}",
                                             subject: "NUnit Test Success",
-                                            to: "martindolores65@gmail.com"
+                                            to: "martindolores65@gmail.com",
+                                            attachLog: true
                     }
                 }
             }
