@@ -12,7 +12,6 @@ public class UnitTest
     private static string displayText;
     private static int randomNumber;
     private static int passed = 0;
-
     private static int Expected = 38;
     [Test]
     public void SimpleTest()
