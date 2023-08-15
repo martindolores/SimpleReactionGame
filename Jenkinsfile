@@ -78,12 +78,14 @@ pipeline {
                                 echo "Snyk Security scan failed."
                                 emailext body: "Snyk security scan failed for ${env.JOB_NAME}",
                                         subject: "Snyk Security Scan Failure",
-                                        to: "martindolores65@gmail.com"
+                                        to: "martindolores65@gmail.com",
+                                        attachLog: true
                             } else {
                                 echo "Snyk Security scan success."
                                 emailext body: "Snyk security scan success for ${env.JOB_NAME}",
                                         subject: "Snyk Security Scan Success",
-                                        to: "martindolores65@gmail.com"
+                                        to: "martindolores65@gmail.com",
+                                        attachLog: true
                             }
                         }
                     }
@@ -114,12 +116,14 @@ pipeline {
                                 echo "NUnit Stage Test failed."
                                 emailext body: "NUnit stage test failed for ${env.JOB_NAME}",
                                         subject: "NUnit Stage Test Failure",
-                                        to: "martindolores65@gmail.com"
+                                        to: "martindolores65@gmail.com",
+                                        attachLog: true
                             } else {
                                 echo "NUnit Stage Test Success."
                                 emailext body: "NUnit stage test success for ${env.JOB_NAME}",
                                         subject: "NUnit Stage Test Success",
-                                        to: "martindolores65@gmail.com"
+                                        to: "martindolores65@gmail.com",
+                                        attachLog: true
                     }
                 }
             }
