@@ -55,11 +55,9 @@ pipeline {
                             bat "${SNYK_PATH} auth ${SNYK_TOKEN}"
                             
                             def snykTestCmd = bat "${SNYK_PATH} test --all-projects"
-                            def snykTestResult = bat(script: snykTestCmd)
+                            def snykTestResult = bat(script: snykTestCmd, returnStatus: true)
                             
-                            def exitCode = currentBuild.rawBuild.getResult().getExitCode()
-
-                            if (exitCode != 0) {
+                            if (snykTestResult != 0) {
                                 currentBuild.result = "FAILURE"
                                 echo "Snyk Security scan failed."
                                 emailext body: "Snyk security scan failed for ${env.JOB_NAME}",
