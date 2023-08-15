@@ -54,7 +54,7 @@ pipeline {
                         {
                             bat "${SNYK_PATH} auth ${SNYK_TOKEN}"
                             
-                            def snykTestCmd = bat "${SNYK_PATH} test --all-projects"
+                            def snykTestCmd = "${SNYK_PATH} test --all-projects"
                             def snykTestResult = bat(script: snykTestCmd, returnStatus: true)
                             
                             if (snykTestResult != 0) {
