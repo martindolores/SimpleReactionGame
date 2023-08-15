@@ -109,7 +109,7 @@ pipeline {
                     def nunitStageTestCmd = "plink -i \"${STAGING_SSH_KEY_PATH}\" ${STAGING_SERVER} \"cd ${STAGING_DIRECTORY}/SimpleReactionGame && dotnet test\""
                     def nunitStageTestResult = bat(script: nunitStageTestCmd, returnStatus: true)
 
-                    if (nunitTestResult != 0) {
+                    if (nunitStageTestResult != 0) {
                                 currentBuild.result = "FAILURE"
                                 echo "NUnit Stage Test failed."
                                 emailext body: "NUnit stage test failed for ${env.JOB_NAME}",
