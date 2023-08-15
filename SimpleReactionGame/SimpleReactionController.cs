@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading;
 using SimpleReactionMachine;
 
-namespace Tester
+namespace SimpleReactionMachine
 {
     public class SimpleReactionController : IController
     {

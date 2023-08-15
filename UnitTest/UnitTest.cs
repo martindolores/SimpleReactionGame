@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using SimpleReactionMachine;
-using Tester;
 
 namespace UnitTests;
 
